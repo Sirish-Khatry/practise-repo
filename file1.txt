@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
  Hellow wrld
 =======
  Hellow wrld
 >>>>>>> 1c53fcb2312890e28747ba7770f3640c4235735a
+HELLOW WORLD
+=======
+ Hellow world
+>>>>>>> e6dea1d955e022aa7fa41f6eb238a3fdb273ddfc
 HELLOW WORLD
