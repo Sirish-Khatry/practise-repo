@@ -54,7 +54,7 @@ List every unique world language.
 -SELECT DISTINCT language FROM countrylanguage
 
 List the names and GNP of the world's top 10 richest countries.
-
+- SELECT name, gnp FROM country ORDER BY gnp DESC LIMIT 10
 
 List the names of, and number of languages spoken by, the top ten most multilingual countries.
 
