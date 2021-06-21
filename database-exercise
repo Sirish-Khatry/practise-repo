@@ -1,0 +1,75 @@
+Using COUNT, get the number of cities in the USA.
+- SELECT COUNT(countrycode) FROM city where countrycode = "USA"
+
+Find out the population and life expectancy for people in Argentina.
+-SELECT name, population, lifeexpectancy FROM country WHERE name = "argentina"
+
+Using IS NOT NULL, ORDER BY, and LIMIT, which country has the highest life expectancy?
+- SELECT name, MAX(lifeexpectancy) FROM country WHERE lifeexpectancy IS NOT NULL GROUP BY name ORDER BY lifeexpectancy DESC LIMIT 1;
+
+Using JOIN ... ON, find the capital city of Spain.
+-SELECT co.`name` AS Country, ci.`name` AS Capital
+FROM country co
+JOIN city ci ON co.capital = ci.id
+WHERE co.name = "Spain" 
+
+Using JOIN ... ON, list all the languages spoken in the Southeast Asia region.
+-SELECT cl.Language AS Language_spoken_
+FROM country co
+JOIN countrylanguage cl ON co.code = cl.countrycode
+WHERE co.region = "Southeast Asia" 
+
+Using a single query, list 25 cities around the world that start with the letter F.
+-SELECT `Name` FROM world.city WHERE name LIKE "F%" LIMIT 25
+
+Using COUNT and JOIN ... ON, get the number of cities in China.
+-SELECT co.`name` AS Country, COUNT(ci.countrycode)
+FROM city ci
+JOIN country co ON co.code = ci.countrycode
+WHERE co.name = "China" 
+
+
+Using IS NOT NULL, ORDER BY, and LIMIT, which country has the lowest population? Discard non-zero populations.
+- SELECT name, population FROM country where population =( SELECT population FROM country WHERE population > 0 AND population IS NOT NULL ORDER BY population ASC LIMIT 1 );
+
+Using aggregate functions, return the number of countries the database contains.
+-SELECT COUNT(name) FROM country
+
+What are the top ten largest countries by area?
+SELECT `name`, surfacearea FROM country ORDER BY surfacearea DESC limit 10
+
+List the five largest cities by population in Japan.
+-SELECT ci.`name` AS City, ci.population AS Population
+FROM city ci
+JOIN country co ON co.code = ci.countrycode
+WHERE co.name = "Japan" 
+LIMIT 5
+
+List the names and country codes of every country with Elizabeth II as its Head of State. You will need to fix the mistake first!
+-SELECT code, name FROM country WHERE headofstate = "Elisabeth II"
+
+List the top ten countries with the smallest population-to-area ratio. Discard any countries with a ratio of 0.
+-
+List every unique world language.
+-SELECT DISTINCT language FROM countrylanguage
+
+List the names and GNP of the world's top 10 richest countries.
+
+
+List the names of, and number of languages spoken by, the top ten most multilingual countries.
+
+
+List every country where over 50% of its population can speak German.
+-SELECT cl.percentage AS Percentage_German_Spoken, co.name AS Country
+FROM country co
+JOIN countrylanguage cl ON co.code = cl.countrycode
+WHERE cl.language = "German" AND cl.percentage > 50
+
+Which country has the worst life expectancy? Discard zero or null values.
+-	SELECT name, MAX(lifeexpectancy) FROM country WHERE lifeexpectancy > 0 GROUP BY name ORDER BY lifeexpectancy ASC LIMIT 1; 
+
+List the top three most common government forms.
+
+
+How many countries have gained independence since records began?
+SELECT COUNT(name) AS Number_of_Countrys FROM country WHERE indepyear IS NOT NULL;
