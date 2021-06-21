@@ -57,7 +57,12 @@ List the names and GNP of the world's top 10 richest countries.
 - SELECT name, gnp FROM country ORDER BY gnp DESC LIMIT 10
 
 List the names of, and number of languages spoken by, the top ten most multilingual countries.
-
+- SELECT COUNT(co.`name`) AS Language_Spoken, co.name AS Country
+FROM country co
+JOIN countrylanguage cl ON co.code = cl.CountryCode
+WHERE co.code = cl.CountryCode
+GROUP BY co.name
+ORDER BY Language_Spoken DESC;
 
 List every country where over 50% of its population can speak German.
 -SELECT cl.percentage AS Percentage_German_Spoken, co.name AS Country
@@ -69,7 +74,7 @@ Which country has the worst life expectancy? Discard zero or null values.
 -	SELECT name, MAX(lifeexpectancy) FROM country WHERE lifeexpectancy > 0 GROUP BY name ORDER BY lifeexpectancy ASC LIMIT 1; 
 
 List the top three most common government forms.
-
+- SELECT COUNT(governmentForm) AS Most_Common_GovForm, governmentform FROM country GROUP BY governmentform ORDER BY Most_Common_GovForm DESC;
 
 How many countries have gained independence since records began?
 SELECT COUNT(name) AS Number_of_Countrys FROM country WHERE indepyear IS NOT NULL;
