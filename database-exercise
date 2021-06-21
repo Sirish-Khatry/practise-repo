@@ -49,7 +49,13 @@ List the names and country codes of every country with Elizabeth II as its Head 
 -SELECT code, name FROM country WHERE headofstate = "Elisabeth II"
 
 List the top ten countries with the smallest population-to-area ratio. Discard any countries with a ratio of 0.
--
+- SELECT Name, population, surfacearea, (population/surfacearea) AS ratio
+    FROM country
+    WHERE population IS NOT NULL
+    AND population!=0
+    ORDER BY ratio
+    LIMIT 10
+    
 List every unique world language.
 -SELECT DISTINCT language FROM countrylanguage
 
