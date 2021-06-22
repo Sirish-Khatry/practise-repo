@@ -43,7 +43,12 @@ ORDER BY Frequency DESC LIMIT 1;
 
 
 When is 'Academy Dinosaur' due?
-
+- SELECT DATE_ADD(r.rental_date, INTERVAL f.rental_duration DAY) AS expected_return_date, r.rental_id, r.rental_date, r.return_date, f.title
+FROM rental r
+JOIN inventory i ON i.inventory_id = r.inventory_id
+JOIN film f ON f.film_id = i.film_id
+WHERE f.title = "Academy Dinosaur" AND r.return_date IS NULL
+GROUP BY expected_return_date;
 
 What is the average runtime of all films?
 - SELECT AVG(length) AS AVG_RUNTIME FROM film
