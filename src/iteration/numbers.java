@@ -4,11 +4,12 @@ public class numbers {
 
 	public static void main(String[] args) {
 
-		System.out.println(printDigitAlpha(18));
+		System.out.println(printChar(7777));
 		
+		//System.out.println(102 - (102 - 102 % 100) ); //gives wrong result like if digit = 999, ninety hundred ninety nine
 	}
 	
-	public static String printDigitAlpha(int digit){
+	public static String printChar(int digit){
 		
 		if(digit < 0) {
 			return "Please enter a valid number above 0";
@@ -40,14 +41,22 @@ public class numbers {
 		else if(digit < 100) {
 			return "Ninety-" + smallDigit(digit - 90);
 		}
-		else if(digit < 1000 && digit % 100 == 0) {
-			return printDigitAlpha(digit / 100) + "-Hundred"; ///dividing the number by 100 to get the first digit
+		else if(digit < 1000 && digit % 100 == 0) { //Using modulus to check if the digit has remainder of 0 when divided by 100
+			return printChar(digit / 100) + "Hundred"; ///dividing the number by 100 to get the first digit
 		}
 		
 		else if(digit < 1000) {
-			return "";
+			return printChar((digit - (digit % 100)) / 100) + " Hundred and " + printChar(digit -(digit - (digit % 100))); 
+		}     //finding the first digit from the number using modulus, if digit = 102, 102 % 100 = 2, then 2 - 102 = 100 and 100 / 100 = 1                                                                  //
+			// finding the last digit, if digit = 102, 102 % 100 = 2, then 102-2 = 100, then 102-100 = 2 
+		
+		else if(digit < 10000 && digit % 1000 == 0) {
+			return printChar(digit / 1000) + "Thousand";
 		}
 		
+		else if(digit < 10000) {
+			return printChar((digit - (digit % 1000)) / 1000) + " Thousand " + printChar(digit -(digit - (digit % 1000)));
+		}
 		else {
 			return "";
 		}
