@@ -1,4 +1,4 @@
-package classExercise;
+package inheritance_polimorphism;
 
 import java.util.ArrayList;
 
@@ -35,9 +35,11 @@ public class Runner {
 		s.setUsername("Sirish");
 		System.out.println(s.getUsername());
 		
-		Student engStudent = new Engineering();
+		Engineering engStudent = new Engineering();
 		engStudent.studentGreet();
 		
+		engStudent.setModules("Software, Web-Dev, Databases");
+		System.out.println(engStudent.getModules());
 	}
 	
 	
