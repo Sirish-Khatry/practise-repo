@@ -38,6 +38,17 @@ public class Runner {
 		Student engStudent = new Engineering();
 		engStudent.studentGreet();
 		
+		
+		String text = "xxbreadkcjrbreadxx";
+		for(int i = 0; i < text.length(); i++) {
+			char c = text.charAt(i);
+			String text2 = "" + Character.toString(c) + Character.toString(c) + Character.toString(c);
+			text = text.concat(text2);
+		}
+		
+		System.out.println(text);
+		
+		
 	}
 	
 	
