@@ -5,10 +5,12 @@ import java.util.List;
 
 public class Cage<T extends Animal> {
 	
-	private List<T> entitys = new ArrayList<T>();
+private T entitys;
+
+//	private List<T> entitys = new ArrayList<T>();
 	
 	
-	public Cage(List<T> entitys) {
+	public Cage(T entitys) {
 		super();
 		this.entitys = entitys;
 	}
@@ -20,16 +22,12 @@ public class Cage<T extends Animal> {
 
 	public void add(T entity) {
 		
-		entitys.add(entity);
+		this.entitys = entity;
 	}
 	
-	public Animal get() {	
+	public String get() {	
 		
-		for(Animal a : entitys) {
-		
-		return a;
-		}
-		return null;
+		return this.entitys.getName();
 	}
 
 	@Override
